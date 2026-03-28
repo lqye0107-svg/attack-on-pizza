@@ -7,7 +7,7 @@
     <div class="hero-banner">
     <img src="{% static 'core/images/menu-banner.png' %}" alt="Attack on Pizza menu banner" class="hero-image">
     </div>
-    
+
     <h1 class="page-title">Menu</h1>
 
     <section style="margin-bottom: 32px;">
@@ -33,7 +33,7 @@
                             </ul>
                         {% endif %}
 
-                        <a class="button" href="#">View Details</a>
+                        <a class="button" href="{% url 'pizza_detail' pizza.id %}">View Details</a>
                     </div>
                 {% endfor %}
             </div>
