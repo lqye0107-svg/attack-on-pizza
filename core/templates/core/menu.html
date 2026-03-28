@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu - Attack on Pizza</title>
-</head>
-<body>
-    <h1>Menu</h1>
-    <p>Menu page is working.</p>
-    <a href="{% url 'home' %}">Back to Home</a>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Menu - Attack on Pizza{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <h1 class="page-title">Menu</h1>
+        <p>The menu page is connected and ready for real data later.</p>
+        <p>Pizza and drink cards will be added here.</p>
+    </div>
+{% endblock %}
