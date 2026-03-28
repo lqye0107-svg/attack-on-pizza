@@ -153,3 +153,22 @@ form textarea {
     object-fit: cover;
     border-radius: 10px;
 }
+
+#product image
+.detail-image {
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 16px;
+}
+
+form ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+form ul li {
+    margin-bottom: 8px;
+}
