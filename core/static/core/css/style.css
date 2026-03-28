@@ -74,3 +74,31 @@ body {
     margin-bottom: 16px;
     border-radius: 6px;
 }
+
+form p {
+    margin-bottom: 14px;
+}
+
+form input,
+form select,
+form textarea {
+    width: 100%;
+    max-width: 420px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.helptext {
+    display: block;
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 4px;
+}
+
+.errorlist {
+    color: #b00020;
+    margin: 6px 0 10px;
+    padding-left: 18px;
+}
