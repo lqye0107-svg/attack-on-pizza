@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attack on Pizza</title>
-</head>
-<body>
-    <h1>Attack on Pizza</h1>
-    <p>Home page is working.</p>
-    <a href="{% url 'menu' %}">Go to Menu</a>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Home - Attack on Pizza{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <h1 class="page-title">Attack on Pizza</h1>
+        <p>Welcome to our pizza take-out restaurant web app.</p>
+        <a class="button" href="{% url 'menu' %}">View Menu</a>
+    </div>
+{% endblock %}
