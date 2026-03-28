@@ -1,8 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib import messages
-from .forms import RegisterForm
+from .forms import RegisterForm, PizzaCustomizeForm
 from .models import Pizza, Drink
 
 
@@ -55,3 +55,36 @@ class CustomLogoutView(LogoutView):
     def dispatch(self, request, *args, **kwargs):
         messages.success(request, 'You have logged out successfully.')
         return super().dispatch(request, *args, **kwargs)
+    
+
+def pizza_detail_view(request, pizza_id):
+    pizza = get_object_or_404(
+        Pizza.objects.prefetch_related('sizes', 'available_toppings'),
+        id=pizza_id,
+        is_available=True
+    )
+
+    if request.method == 'POST':
+        form = PizzaCustomizeForm(request.POST, pizza=pizza)
+        if form.is_valid():
+            selected_size = form.cleaned_data['size']
+            selected_toppings = form.cleaned_data['toppings']
+            quantity = form.cleaned_data['quantity']
+
+            toppings_names = [t.name for t in selected_toppings]
+
+            messages.success(
+                request,
+                f'Pizza selected: {pizza.name}, size: {selected_size.get_size_display()}, '
+                f'toppings: {", ".join(toppings_names) if toppings_names else "None"}, '
+                f'quantity: {quantity}'
+            )
+            return redirect('pizza_detail', pizza_id=pizza.id)
+    else:
+        form = PizzaCustomizeForm(pizza=pizza)
+
+    context = {
+        'pizza': pizza,
+        'form': form,
+    }
+    return render(request, 'core/pizza_detail.html', context)
