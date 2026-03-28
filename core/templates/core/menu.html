@@ -3,9 +3,51 @@
 {% block title %}Menu - Attack on Pizza{% endblock %}
 
 {% block content %}
-    <div class="card">
-        <h1 class="page-title">Menu</h1>
-        <p>The menu page is connected and ready for real data later.</p>
-        <p>Pizza and drink cards will be added here.</p>
-    </div>
+    <h1 class="page-title">Menu</h1>
+
+    <section style="margin-bottom: 32px;">
+        <h2>Pizzas</h2>
+
+        {% if pizzas %}
+            <div class="menu-grid">
+                {% for pizza in pizzas %}
+                    <div class="card menu-card">
+                        <h3>{{ pizza.name }}</h3>
+                        <p>{{ pizza.description }}</p>
+
+                        {% if pizza.sizes.all %}
+                            <p><strong>Available sizes:</strong></p>
+                            <ul>
+                                {% for size in pizza.sizes.all %}
+                                    <li>{{ size.get_size_display }} - {{ size.price }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+
+                        <a class="button" href="#">View Details</a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No pizzas available right now.</p>
+        {% endif %}
+    </section>
+
+    <section>
+        <h2>Drinks</h2>
+
+        {% if drinks %}
+            <div class="menu-grid">
+                {% for drink in drinks %}
+                    <div class="card menu-card">
+                        <h3>{{ drink.name }}</h3>
+                        <p>Size: {{ drink.size_label }}</p>
+                        <p>Price: {{ drink.price }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No drinks available right now.</p>
+        {% endif %}
+    </section>
 {% endblock %}
