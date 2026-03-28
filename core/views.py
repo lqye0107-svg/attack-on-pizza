@@ -3,6 +3,7 @@ from django.contrib.auth import login
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib import messages
 from .forms import RegisterForm
+from .models import Pizza, Drink
 
 
 def home_view(request):
@@ -10,7 +11,14 @@ def home_view(request):
 
 
 def menu_view(request):
-    return render(request, 'core/menu.html')
+    pizzas = Pizza.objects.filter(is_available=True).prefetch_related('sizes')
+    drinks = Drink.objects.filter(is_available=True)
+
+    context = {
+        'pizzas': pizzas,
+        'drinks': drinks,
+    }
+    return render(request, 'core/menu.html', context)
 
 
 def register_view(request):
