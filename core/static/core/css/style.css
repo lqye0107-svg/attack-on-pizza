@@ -102,3 +102,17 @@ form textarea {
     margin: 6px 0 10px;
     padding-left: 18px;
 }
+
+.nav-button {
+    background: none;
+    border: none;
+    color: #fff;
+    margin-left: 18px;
+    cursor: pointer;
+    font: inherit;
+    padding: 0;
+}
+
+.nav-button:hover {
+    text-decoration: underline;
+}
