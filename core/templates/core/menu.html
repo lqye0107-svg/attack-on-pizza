@@ -3,6 +3,10 @@
 {% block title %}Menu - Attack on Pizza{% endblock %}
 
 {% block content %}
+    <div class="hero-banner">
+    <img src="{% static 'core/images/menu-banner.jpg' %}" alt="Attack on Pizza menu banner" class="hero-image">
+    </div>
+    
     <h1 class="page-title">Menu</h1>
 
     <section style="margin-bottom: 32px;">
@@ -12,6 +16,10 @@
             <div class="menu-grid">
                 {% for pizza in pizzas %}
                     <div class="card menu-card">
+                        {% if pizza.image %}
+                            <img src="{{ pizza.image.url }}" alt="{{ pizza.name }}" class="menu-image">
+                        {% endif %}
+
                         <h3>{{ pizza.name }}</h3>
                         <p>{{ pizza.description }}</p>
 
@@ -40,6 +48,10 @@
             <div class="menu-grid">
                 {% for drink in drinks %}
                     <div class="card menu-card">
+                        {% if drink.image %}
+                            <img src="{{ drink.image.url }}" alt="{{ drink.name }}" class="menu-image">
+                        {% endif %}
+
                         <h3>{{ drink.name }}</h3>
                         <p>Size: {{ drink.size_label }}</p>
                         <p>Price: {{ drink.price }}</p>
