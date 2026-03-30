@@ -4,14 +4,10 @@
 {% block title %}Menu - Attack on Pizza{% endblock %}
 
 {% block content %}
-    <div class="hero-banner">
-    <img src="{% static 'core/images/menu-banner.png' %}" alt="Attack on Pizza menu banner" class="hero-image">
-    </div>
+<div class="menu-page">
 
-    <h1 class="page-title">Menu</h1>
-
-    <section style="margin-bottom: 32px;">
-        <h2>Pizzas</h2>
+    <section class="menu-section">
+        <h1 class="menu-section-title">Pizza Menu</h1>
 
         {% if pizzas %}
             <div class="menu-grid">
@@ -21,19 +17,28 @@
                             <img src="{{ pizza.image.url }}" alt="{{ pizza.name }}" class="menu-image">
                         {% endif %}
 
-                        <h3>{{ pizza.name }}</h3>
-                        <p>{{ pizza.description }}</p>
+                        <div class="menu-card-body">
+                            <h3 class="menu-item-title">{{ pizza.name }}</h3>
 
-                        {% if pizza.sizes.all %}
-                            <p><strong>Available sizes:</strong></p>
-                            <ul>
-                                {% for size in pizza.sizes.all %}
-                                    <li>{{ size.get_size_display }} - {{ size.price }}</li>
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
+                            {% if pizza.description %}
+                                <p class="menu-description">{{ pizza.description }}</p>
+                            {% endif %}
 
-                        <a class="button" href="{% url 'pizza_detail' pizza.id %}">View Details</a>
+                            {% if pizza.sizes.all %}
+                                <div class="menu-meta">
+                                    <p><strong>Available sizes:</strong></p>
+                                    <ul class="menu-size-list">
+                                        {% for size in pizza.sizes.all %}
+                                            <li>{{ size.get_size_display }} - {{ size.price }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="menu-card-footer">
+                            <a class="button" href="{% url 'pizza_detail' pizza.id %}">View Details</a>
+                        </div>
                     </div>
                 {% endfor %}
             </div>
@@ -42,20 +47,22 @@
         {% endif %}
     </section>
 
-    <section>
-        <h2>Drinks</h2>
+    <section class="menu-section">
+        <h2 class="menu-section-title">Drink Menu</h2>
 
         {% if drinks %}
             <div class="menu-grid">
                 {% for drink in drinks %}
-                    <div class="card menu-card">
+                    <div class="card menu-card drink-card">
                         {% if drink.image %}
                             <img src="{{ drink.image.url }}" alt="{{ drink.name }}" class="menu-image">
                         {% endif %}
 
-                        <h3>{{ drink.name }}</h3>
-                        <p>Size: {{ drink.size_label }}</p>
-                        <p>Price: {{ drink.price }}</p>
+                        <div class="menu-card-body">
+                            <h3 class="menu-item-title">{{ drink.name }}</h3>
+                            <p class="drink-meta"><strong>Size:</strong> {{ drink.size_label }}</p>
+                            <p class="drink-meta"><strong>Price:</strong> {{ drink.price }}</p>
+                        </div>
                     </div>
                 {% endfor %}
             </div>
@@ -63,4 +70,6 @@
             <p>No drinks available right now.</p>
         {% endif %}
     </section>
+
+</div>
 {% endblock %}

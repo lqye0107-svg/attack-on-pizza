@@ -1,11 +1,25 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Home - Attack on Pizza{% endblock %}
 
 {% block content %}
-    <div class="card">
-        <h1 class="page-title">Attack on Pizza</h1>
-        <p>Welcome to our pizza take-out restaurant web app.</p>
-        <a class="button" href="{% url 'menu' %}">View Menu</a>
+<div class="home-page">
+
+    <div class="hero-banner">
+        <img src="{% static 'core/images/menu-banner.png' %}" alt="Attack on Pizza banner" class="hero-image">
     </div>
+
+    <div class="card home-intro-card">
+        <h1 class="home-title">Welcome to Attack on Pizza</h1>
+        <p class="home-text">
+            Your anime-inspired pizza take-out experience starts here.
+            Explore our pizzas, choose your size, customize your toppings,
+            and get ready to attack your hunger.
+        </p>
+        
+        <a href="{% url 'menu' %}" class="button">Explore Menu</a>
+    </div>
+
+</div>
 {% endblock %}
