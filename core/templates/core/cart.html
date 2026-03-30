@@ -32,6 +32,10 @@
                             <p><strong>Quantity:</strong> {{ item.quantity }}</p>
                             <p><strong>Unit Price:</strong> {{ item.unit_price }}</p>
                             <p><strong>Subtotal:</strong> {{ item.subtotal }}</p>
+
+                            <div class="cart-item-actions">
+                                <a href="{% url 'remove_from_cart' item.index %}" class="button">Remove</a>
+                            </div>
                         </div>
                     </div>
                 {% endfor %}
@@ -41,8 +45,10 @@
                 <h2>Order Summary</h2>
                 <p><strong>Total:</strong> {{ cart_total }}</p>
 
-                <div class="cart-actions">
-                    <a href="{% url 'menu' %}" class="button">Continue Shopping</a>
+                <div class="cart-item-actions">
+                    {% if item.index is not None %}
+                        <a href="{% url 'remove_from_cart' item.index %}" class="button">Remove</a>
+                    {% endif %}
                 </div>
             </div>
         </div>

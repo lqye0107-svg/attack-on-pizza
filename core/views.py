@@ -154,8 +154,8 @@ def cart_view(request):
     cart_items = []
     cart_total = Decimal('0.00')
 
-    for item in cart:
-        unit_price = Decimal(item['unit_price'])
+    for index, item in enumerate(cart):
+        unit_price = Decimal(str(item.get('unit_price', '0.00')))
         quantity = int(item.get('quantity', 1))
         subtotal = unit_price * quantity
 
@@ -164,11 +164,12 @@ def cart_view(request):
         if not item_type:
             if 'pizza_name' in item:
                 item_type = 'pizza'
-            elif 'name' in item and 'topping_names' not in item and 'pizza_id' not in item:
+            elif 'name' in item and 'pizza_name' not in item:
                 item_type = 'drink'
 
         if item_type == 'pizza':
             cart_item = {
+                'index': index,
                 'item_type': 'pizza',
                 'name': item.get('name', item.get('pizza_name', 'Pizza')),
                 'size_label': item.get('size_label', ''),
@@ -180,6 +181,7 @@ def cart_view(request):
 
         elif item_type == 'drink':
             cart_item = {
+                'index': index,
                 'item_type': 'drink',
                 'name': item.get('name', 'Drink'),
                 'size_label': item.get('size_label', ''),
@@ -199,3 +201,16 @@ def cart_view(request):
         'cart_total': cart_total,
     }
     return render(request, 'core/cart.html', context)
+
+def remove_from_cart_view(request, item_index):
+    cart = request.session.get('cart', [])
+
+    if 0 <= item_index < len(cart):
+        removed_item = cart.pop(item_index)
+        request.session['cart'] = cart
+        request.session.modified = True
+
+        item_name = removed_item.get('name', 'Item')
+        messages.success(request, f'{item_name} removed from cart.')
+
+    return redirect('cart')

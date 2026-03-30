@@ -554,3 +554,7 @@ form ul li {
         grid-template-columns: 1fr;
     }
 }
+
+.cart-item-actions {
+    margin-top: 14px;
+}
