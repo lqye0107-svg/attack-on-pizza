@@ -142,7 +142,6 @@ form textarea {
     margin-top: 0;
 }
 
-#banner
 .hero-banner {
     margin-bottom: 24px;
 }
@@ -154,7 +153,6 @@ form textarea {
     border-radius: 10px;
 }
 
-#product image
 .detail-image {
     width: 100%;
     max-width: 420px;
@@ -171,4 +169,282 @@ form ul {
 
 form ul li {
     margin-bottom: 8px;
+}
+
+
+.pizza-detail-layout {
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.pizza-detail-image-wrap {
+    margin-bottom: 24px;
+}
+
+.detail-image {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.pizza-detail-info {
+    max-width: 760px;
+}
+
+.pizza-title {
+    margin: 0 0 14px;
+    font-size: 2rem;
+}
+
+.pizza-description-box {
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+}
+
+.price-summary-box {
+    margin-bottom: 28px;
+}
+
+.price-summary-box h3 {
+    margin: 0 0 10px;
+}
+
+.price-summary-list {
+    margin: 0;
+    padding-left: 18px;
+}
+
+.detail-section {
+    margin-bottom: 28px;
+}
+
+.detail-section h2 {
+    margin-bottom: 10px;
+}
+
+.section-note {
+    margin: 0 0 12px;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.option-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.option-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 12px;
+    cursor: pointer;
+    min-height: 64px;
+    box-sizing: border-box;
+}
+
+.option-input {
+    flex-shrink: 0;
+    padding-top: 2px;
+}
+
+.option-text {
+    font-size: 0.92rem;
+    line-height: 1.35;
+}
+
+.option-card input[type="radio"],
+.option-card input[type="checkbox"] {
+    width: auto;
+    max-width: none;
+    margin: 0;
+}
+
+.quantity-box input {
+    width: 90px;
+    max-width: none;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.detail-actions {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 14px;
+}
+
+.back-link {
+    color: #5a2ca0;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.topping-name {
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.topping-price-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    color: #555;
+    font-size: 0.85rem;
+}
+
+.topping-card {
+    min-height: 90px;
+}
+
+.detail-shell {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.pizza-detail-layout {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.pizza-detail-image-wrap {
+    margin-bottom: 24px;
+}
+
+.detail-image {
+    display: block;
+    width: 100%;
+    max-width: 360px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.pizza-detail-info {
+    max-width: 760px;
+}
+
+.pizza-title {
+    margin: 0 0 14px;
+    font-size: 2rem;
+}
+
+.pizza-description-box {
+    background: #fafafa;
+    border: 1px solid #ccc;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    min-height: 24px;
+}
+
+.price-summary-box {
+    margin-bottom: 24px;
+}
+
+.price-summary-box h3 {
+    margin: 0 0 10px;
+}
+
+.price-summary-list {
+    margin: 0;
+    padding-left: 18px;
+}
+
+.detail-section {
+    margin-bottom: 28px;
+}
+
+.detail-section h2 {
+    margin-bottom: 12px;
+}
+
+.option-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.option-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 12px;
+    cursor: pointer;
+    min-height: 72px;
+    box-sizing: border-box;
+}
+
+.option-input {
+    flex-shrink: 0;
+    padding-top: 2px;
+}
+
+.option-text {
+    font-size: 0.92rem;
+    line-height: 1.35;
+}
+
+.option-card input[type="radio"],
+.option-card input[type="checkbox"] {
+    width: auto;
+    max-width: none;
+    margin: 0;
+}
+
+.topping-name {
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.topping-price-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    color: #555;
+    font-size: 0.85rem;
+}
+
+.topping-card {
+    min-height: 100px;
+}
+
+.detail-actions {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 14px;
+}
+
+.back-link {
+    color: #5a2ca0;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
 }

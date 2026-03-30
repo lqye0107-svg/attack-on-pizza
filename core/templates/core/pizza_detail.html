@@ -3,22 +3,65 @@
 {% block title %}{{ pizza.name }} - Attack on Pizza{% endblock %}
 
 {% block content %}
-    <div class="card">
-        {% if pizza.image %}
-            <img src="{{ pizza.image.url }}" alt="{{ pizza.name }}" class="detail-image">
-        {% endif %}
+<div class="detail-shell">
+    <div class="pizza-detail-layout">
 
-        <h1 class="page-title">{{ pizza.name }}</h1>
-        <p>{{ pizza.description }}</p>
+        <div class="pizza-detail-image-wrap">
+            {% if pizza.image %}
+                <img src="{{ pizza.image.url }}" alt="{{ pizza.name }}" class="detail-image">
+            {% endif %}
+        </div>
 
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button class="button" type="submit">Add to Cart</button>
-        </form>
+        <div class="pizza-detail-info">
+            <h1 class="pizza-title">{{ pizza.name }}</h1>
 
-        <p style="margin-top: 16px;">
-            <a href="{% url 'menu' %}">← Back to Menu</a>
-        </p>
+            <div class="pizza-description-box">
+                <p>{{ pizza.description }}</p>
+            </div>
+
+            <form method="post" class="pizza-form">
+                {% csrf_token %}
+
+                <section class="detail-section">
+                    <h2>Size</h2>
+                    <div class="option-grid size-grid">
+                        {% for radio in form.size %}
+                            <label class="option-card size-card">
+                                <div class="option-input">{{ radio.tag }}</div>
+                                <div class="option-text">{{ radio.choice_label }}</div>
+                            </label>
+                        {% endfor %}
+                    </div>
+                </section>
+
+                <section class="detail-section">
+                    <h2>Toppings</h2>
+                    <div class="option-grid topping-grid">
+                        {% for topping in available_toppings %}
+                            <label class="option-card topping-card">
+                                <div class="option-input">
+                                    <input type="checkbox" name="toppings" value="{{ topping.id }}">
+                                </div>
+                                <div class="option-text">
+                                    <div class="topping-name">{{ topping.name }}</div>
+                                    <div class="topping-price-lines">
+                                        <small>S: {{ topping.price_small }}</small>
+                                        <small>M: {{ topping.price_medium }}</small>
+                                        <small>L: {{ topping.price_large }}</small>
+                                    </div>
+                                </div>
+                            </label>
+                        {% endfor %}
+                    </div>
+                </section>
+
+                <div class="detail-actions">
+                    <button class="button" type="submit">Add to Cart</button>
+                    <a class="back-link" href="{% url 'menu' %}">← Back to Menu</a>
+                </div>
+            </form>
+        </div>
+
     </div>
+</div>
 {% endblock %}

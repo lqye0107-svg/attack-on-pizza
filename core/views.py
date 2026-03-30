@@ -64,20 +64,20 @@ def pizza_detail_view(request, pizza_id):
         is_available=True
     )
 
+    available_toppings = pizza.available_toppings.filter(is_available=True)
+
     if request.method == 'POST':
         form = PizzaCustomizeForm(request.POST, pizza=pizza)
         if form.is_valid():
             selected_size = form.cleaned_data['size']
             selected_toppings = form.cleaned_data['toppings']
-            quantity = form.cleaned_data['quantity']
 
             toppings_names = [t.name for t in selected_toppings]
 
             messages.success(
                 request,
                 f'Pizza selected: {pizza.name}, size: {selected_size.get_size_display()}, '
-                f'toppings: {", ".join(toppings_names) if toppings_names else "None"}, '
-                f'quantity: {quantity}'
+                f'toppings: {", ".join(toppings_names) if toppings_names else "None"}'
             )
             return redirect('pizza_detail', pizza_id=pizza.id)
     else:
@@ -86,5 +86,6 @@ def pizza_detail_view(request, pizza_id):
     context = {
         'pizza': pizza,
         'form': form,
+        'available_toppings': available_toppings,
     }
     return render(request, 'core/pizza_detail.html', context)
