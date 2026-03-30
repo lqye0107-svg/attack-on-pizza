@@ -156,22 +156,40 @@ def cart_view(request):
 
     for item in cart:
         unit_price = Decimal(item['unit_price'])
-        quantity = int(item['quantity'])
+        quantity = int(item.get('quantity', 1))
         subtotal = unit_price * quantity
 
-        cart_item = {
-            'item_type': item['item_type'],
-            'name': item['name'],
-            'quantity': quantity,
-            'unit_price': unit_price,
-            'subtotal': subtotal,
-        }
+        item_type = item.get('item_type')
 
-        if item['item_type'] == 'pizza':
-            cart_item['size_label'] = item.get('size_label', '')
-            cart_item['topping_names'] = item.get('topping_names', [])
-        elif item['item_type'] == 'drink':
-            cart_item['size_label'] = item.get('size_label', '')
+        if not item_type:
+            if 'pizza_name' in item:
+                item_type = 'pizza'
+            elif 'name' in item and 'topping_names' not in item and 'pizza_id' not in item:
+                item_type = 'drink'
+
+        if item_type == 'pizza':
+            cart_item = {
+                'item_type': 'pizza',
+                'name': item.get('name', item.get('pizza_name', 'Pizza')),
+                'size_label': item.get('size_label', ''),
+                'topping_names': item.get('topping_names', []),
+                'quantity': quantity,
+                'unit_price': unit_price,
+                'subtotal': subtotal,
+            }
+
+        elif item_type == 'drink':
+            cart_item = {
+                'item_type': 'drink',
+                'name': item.get('name', 'Drink'),
+                'size_label': item.get('size_label', ''),
+                'quantity': quantity,
+                'unit_price': unit_price,
+                'subtotal': subtotal,
+            }
+
+        else:
+            continue
 
         cart_items.append(cart_item)
         cart_total += subtotal
