@@ -175,8 +175,6 @@ def cart_view(request):
                 'size_label': item.get('size_label', ''),
                 'topping_names': item.get('topping_names', []),
                 'quantity': quantity,
-                'unit_price': unit_price,
-                'subtotal': subtotal,
             }
 
         elif item_type == 'drink':
@@ -186,8 +184,6 @@ def cart_view(request):
                 'name': item.get('name', 'Drink'),
                 'size_label': item.get('size_label', ''),
                 'quantity': quantity,
-                'unit_price': unit_price,
-                'subtotal': subtotal,
             }
 
         else:
@@ -212,5 +208,32 @@ def remove_from_cart_view(request, item_index):
 
         item_name = removed_item.get('name', 'Item')
         messages.success(request, f'{item_name} removed from cart.')
+
+    return redirect('cart')
+
+def increase_cart_item_view(request, item_index):
+    cart = request.session.get('cart', [])
+
+    if 0 <= item_index < len(cart):
+        cart[item_index]['quantity'] = int(cart[item_index].get('quantity', 1)) + 1
+        request.session['cart'] = cart
+        request.session.modified = True
+
+    return redirect('cart')
+
+
+def decrease_cart_item_view(request, item_index):
+    cart = request.session.get('cart', [])
+
+    if 0 <= item_index < len(cart):
+        current_quantity = int(cart[item_index].get('quantity', 1))
+
+        if current_quantity > 1:
+            cart[item_index]['quantity'] = current_quantity - 1
+        else:
+            cart.pop(item_index)
+
+        request.session['cart'] = cart
+        request.session.modified = True
 
     return redirect('cart')

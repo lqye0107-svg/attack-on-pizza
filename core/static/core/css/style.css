@@ -422,8 +422,9 @@ form ul li {
 .detail-actions {
     margin-top: 24px;
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
     gap: 14px;
 }
 
@@ -557,4 +558,43 @@ form ul li {
 
 .cart-item-actions {
     margin-top: 14px;
+}
+
+.cart-quantity-row {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.cart-quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    color: #222;
+    background: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.quantity-button:hover {
+    background: #f3f3f3;
+}
+
+.quantity-value {
+    min-width: 24px;
+    text-align: center;
+    font-weight: 600;
 }

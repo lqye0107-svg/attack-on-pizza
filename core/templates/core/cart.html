@@ -29,12 +29,19 @@
                                 <p><strong>Size:</strong> {{ item.size_label }}</p>
                             {% endif %}
 
-                            <p><strong>Quantity:</strong> {{ item.quantity }}</p>
-                            <p><strong>Unit Price:</strong> {{ item.unit_price }}</p>
-                            <p><strong>Subtotal:</strong> {{ item.subtotal }}</p>
+                            <div class="cart-quantity-row">
+                                <span><strong>Quantity:</strong></span>
+                                <div class="cart-quantity-controls">
+                                    <a href="{% url 'decrease_cart_item' item.index %}" class="quantity-button">−</a>
+                                    <span class="quantity-value">{{ item.quantity }}</span>
+                                    <a href="{% url 'increase_cart_item' item.index %}" class="quantity-button">+</a>
+                                </div>
+                            </div>
 
                             <div class="cart-item-actions">
-                                <a href="{% url 'remove_from_cart' item.index %}" class="button">Remove</a>
+                                {% if item.index is not None %}
+                                    <a href="{% url 'remove_from_cart' item.index %}" class="button">Remove</a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -45,10 +52,8 @@
                 <h2>Order Summary</h2>
                 <p><strong>Total:</strong> {{ cart_total }}</p>
 
-                <div class="cart-item-actions">
-                    {% if item.index is not None %}
-                        <a href="{% url 'remove_from_cart' item.index %}" class="button">Remove</a>
-                    {% endif %}
+                <div class="cart-actions">
+                    <a href="{% url 'menu' %}" class="button">Continue Shopping</a>
                 </div>
             </div>
         </div>
