@@ -500,3 +500,57 @@ form ul li {
         padding: 24px 0;
     }
 }
+
+
+/* =========================
+   CART PAGE
+========================= */
+.cart-page {
+    padding-bottom: 20px;
+}
+
+.cart-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.cart-item-card {
+    padding: 20px;
+}
+
+.cart-item-title {
+    margin-top: 0;
+    margin-bottom: 14px;
+    font-size: 1.35rem;
+}
+
+.cart-item-info p {
+    margin: 0 0 10px;
+    line-height: 1.5;
+}
+
+.cart-summary-card h2 {
+    margin-top: 0;
+    margin-bottom: 18px;
+}
+
+.cart-actions {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+@media (max-width: 900px) {
+    .cart-layout {
+        grid-template-columns: 1fr;
+    }
+}

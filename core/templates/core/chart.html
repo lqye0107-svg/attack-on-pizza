@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Cart - Attack on Pizza{% endblock %}
+
+{% block content %}
+<div class="cart-page">
+    <h1 class="page-title">Your Cart</h1>
+
+    {% if cart_items %}
+        <div class="cart-layout">
+            <div class="cart-items">
+                {% for item in cart_items %}
+                    <div class="card cart-item-card">
+                        <div class="cart-item-info">
+                            <h2 class="cart-item-title">{{ item.name }}</h2>
+                            <p><strong>Type:</strong> {{ item.item_type|title }}</p>
+
+                            {% if item.item_type == 'pizza' %}
+                                <p><strong>Size:</strong> {{ item.size_label }}</p>
+                                <p>
+                                    <strong>Toppings:</strong>
+                                    {% if item.topping_names %}
+                                        {{ item.topping_names|join:", " }}
+                                    {% else %}
+                                        None
+                                    {% endif %}
+                                </p>
+                            {% elif item.item_type == 'drink' %}
+                                <p><strong>Size:</strong> {{ item.size_label }}</p>
+                            {% endif %}
+
+                            <p><strong>Quantity:</strong> {{ item.quantity }}</p>
+                            <p><strong>Unit Price:</strong> {{ item.unit_price }}</p>
+                            <p><strong>Subtotal:</strong> {{ item.subtotal }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="card cart-summary-card">
+                <h2>Order Summary</h2>
+                <p><strong>Total:</strong> {{ cart_total }}</p>
+
+                <div class="cart-actions">
+                    <a href="{% url 'menu' %}" class="button">Continue Shopping</a>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="card">
+            <p>Your cart is empty.</p>
+            <a href="{% url 'menu' %}" class="button">Go to Menu</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

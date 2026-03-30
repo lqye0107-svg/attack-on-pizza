@@ -1,3 +1,4 @@
+from decimal import Decimal
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login
 from django.contrib.auth.views import LoginView, LogoutView
@@ -55,7 +56,7 @@ class CustomLogoutView(LogoutView):
     def dispatch(self, request, *args, **kwargs):
         messages.success(request, 'You have logged out successfully.')
         return super().dispatch(request, *args, **kwargs)
-    
+
 
 def pizza_detail_view(request, pizza_id):
     pizza = get_object_or_404(
@@ -72,12 +73,47 @@ def pizza_detail_view(request, pizza_id):
             selected_size = form.cleaned_data['size']
             selected_toppings = form.cleaned_data['toppings']
 
-            toppings_names = [t.name for t in selected_toppings]
+            size_code = selected_size.size
+            base_price = selected_size.price
+            topping_total = Decimal('0.00')
+
+            topping_names = []
+            topping_ids = []
+
+            for topping in selected_toppings:
+                topping_names.append(topping.name)
+                topping_ids.append(topping.id)
+
+                if size_code == 'S':
+                    topping_total += topping.price_small
+                elif size_code == 'M':
+                    topping_total += topping.price_medium
+                elif size_code == 'L':
+                    topping_total += topping.price_large
+
+            unit_price = base_price + topping_total
+
+            cart = request.session.get('cart', [])
+
+            cart_item = {
+                'item_type': 'pizza',
+                'item_id': pizza.id,
+                'name': pizza.name,
+                'size_id': selected_size.id,
+                'size_label': selected_size.get_size_display(),
+                'topping_ids': topping_ids,
+                'topping_names': topping_names,
+                'quantity': 1,
+                'unit_price': str(unit_price),
+            }
+
+            cart.append(cart_item)
+            request.session['cart'] = cart
+            request.session.modified = True
 
             messages.success(
                 request,
-                f'Pizza selected: {pizza.name}, size: {selected_size.get_size_display()}, '
-                f'toppings: {", ".join(toppings_names) if toppings_names else "None"}'
+                f'{pizza.name} ({selected_size.get_size_display()}) added to cart.'
             )
             return redirect('pizza_detail', pizza_id=pizza.id)
     else:
@@ -89,3 +125,59 @@ def pizza_detail_view(request, pizza_id):
         'available_toppings': available_toppings,
     }
     return render(request, 'core/pizza_detail.html', context)
+
+
+def add_drink_to_cart_view(request, drink_id):
+    drink = get_object_or_404(Drink, id=drink_id, is_available=True)
+
+    cart = request.session.get('cart', [])
+
+    cart_item = {
+        'item_type': 'drink',
+        'item_id': drink.id,
+        'name': drink.name,
+        'size_label': drink.size_label,
+        'quantity': 1,
+        'unit_price': str(drink.price),
+    }
+
+    cart.append(cart_item)
+    request.session['cart'] = cart
+    request.session.modified = True
+
+    messages.success(request, f'{drink.name} ({drink.size_label}) added to cart.')
+    return redirect('menu')
+
+
+def cart_view(request):
+    cart = request.session.get('cart', [])
+    cart_items = []
+    cart_total = Decimal('0.00')
+
+    for item in cart:
+        unit_price = Decimal(item['unit_price'])
+        quantity = int(item['quantity'])
+        subtotal = unit_price * quantity
+
+        cart_item = {
+            'item_type': item['item_type'],
+            'name': item['name'],
+            'quantity': quantity,
+            'unit_price': unit_price,
+            'subtotal': subtotal,
+        }
+
+        if item['item_type'] == 'pizza':
+            cart_item['size_label'] = item.get('size_label', '')
+            cart_item['topping_names'] = item.get('topping_names', [])
+        elif item['item_type'] == 'drink':
+            cart_item['size_label'] = item.get('size_label', '')
+
+        cart_items.append(cart_item)
+        cart_total += subtotal
+
+    context = {
+        'cart_items': cart_items,
+        'cart_total': cart_total,
+    }
+    return render(request, 'core/cart.html', context)
