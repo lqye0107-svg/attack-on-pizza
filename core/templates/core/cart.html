@@ -53,6 +53,7 @@
                 <p><strong>Total:</strong> {{ cart_total }}</p>
 
                 <div class="cart-actions">
+                    <a href="{% url 'checkout' %}" class="button">Proceed to Checkout</a>
                     <a href="{% url 'menu' %}" class="button">Continue Shopping</a>
                 </div>
             </div>
