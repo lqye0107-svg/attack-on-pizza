@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Checkout - Attack on Pizza{% endblock %}
+
+{% block content %}
+<div class="checkout-page">
+    <h1 class="page-title">Checkout</h1>
+
+    <div class="checkout-layout">
+        <div class="card checkout-items-card">
+            <h2>Your Order</h2>
+
+            {% for item in cart_items %}
+                <div class="checkout-item">
+                    <h3 class="checkout-item-title">{{ item.name }}</h3>
+                    <p><strong>Type:</strong> {{ item.item_type|title }}</p>
+                    <p><strong>Size:</strong> {{ item.size_label }}</p>
+                    <p><strong>Quantity:</strong> {{ item.quantity }}</p>
+
+                    {% if item.item_type == 'pizza' %}
+                        <p>
+                            <strong>Toppings:</strong>
+                            {% if item.topping_names %}
+                                {{ item.topping_names|join:", " }}
+                            {% else %}
+                                None
+                            {% endif %}
+                        </p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="card checkout-summary-card">
+            <h2>Delivery Details</h2>
+
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <p><strong>Total:</strong> {{ cart_total }}</p>
+
+                <div class="checkout-actions">
+                    <button type="submit" class="button">Place Order</button>
+                    <a href="{% url 'cart' %}" class="button">Back to Cart</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
