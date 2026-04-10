@@ -44,3 +44,14 @@ class PizzaCustomizeForm(forms.Form):
                 return obj.name
 
             self.fields['toppings'].label_from_instance = topping_label
+
+
+class CheckoutForm(forms.Form):
+    delivery_address = forms.CharField(
+        max_length=255,
+        required=True,
+        widget=forms.Textarea(attrs={
+            'rows': 3,
+            'placeholder': 'Enter your delivery address'
+        })
+    )

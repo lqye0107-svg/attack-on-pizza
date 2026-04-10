@@ -1,10 +1,11 @@
 from decimal import Decimal
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib import messages
-from .forms import RegisterForm, PizzaCustomizeForm
-from .models import Pizza, Drink
+from .forms import RegisterForm, PizzaCustomizeForm, CheckoutForm
+from .models import Pizza, Drink, Order, OrderItem
 
 
 def home_view(request):
@@ -149,10 +150,110 @@ def add_drink_to_cart_view(request, drink_id):
     return redirect('menu')
 
 
+def calculate_cart_total(cart):
+    total = Decimal('0.00')
+
+    for item in cart:
+        unit_price = Decimal(str(item.get('unit_price', '0.00')))
+        quantity = int(item.get('quantity', 1))
+        total += unit_price * quantity
+
+    return total
+
+
+@login_required
+def checkout_view(request):
+    cart = request.session.get('cart', [])
+
+    if not cart:
+        messages.warning(request, 'Your cart is empty. Please add items before checkout.')
+        return redirect('cart')
+
+    cart_total = calculate_cart_total(cart)
+
+    if request.method == 'POST':
+        form = CheckoutForm(request.POST)
+
+        if form.is_valid():
+            delivery_address = form.cleaned_data['delivery_address']
+
+            order = Order.objects.create(
+                user=request.user,
+                delivery_address=delivery_address,
+                total_price=cart_total,
+                status='PENDING'
+            )
+
+            for item in cart:
+                item_type = item.get('item_type')
+                name_snapshot = item.get('name', '')
+                size_snapshot = item.get('size_label', '')
+                quantity = int(item.get('quantity', 1))
+                unit_price = Decimal(str(item.get('unit_price', '0.00')))
+
+                toppings_snapshot = ''
+                if item_type == 'pizza':
+                    topping_names = item.get('topping_names', [])
+                    toppings_snapshot = ', '.join(topping_names)
+
+                OrderItem.objects.create(
+                    order=order,
+                    item_type=item_type,
+                    name_snapshot=name_snapshot,
+                    size_snapshot=size_snapshot,
+                    quantity=quantity,
+                    unit_price=unit_price,
+                    toppings_snapshot=toppings_snapshot
+                )
+
+            request.session['cart'] = []
+            request.session.modified = True
+
+            messages.success(request, 'Your order has been placed successfully.')
+            return redirect('order_success', order_id=order.id)
+
+    else:
+        form = CheckoutForm()
+
+    cart_items = []
+
+    for index, item in enumerate(cart):
+        item_type = item.get('item_type')
+
+        if item_type == 'pizza':
+            cart_item = {
+                'index': index,
+                'item_type': 'pizza',
+                'name': item.get('name', 'Pizza'),
+                'size_label': item.get('size_label', ''),
+                'topping_names': item.get('topping_names', []),
+                'quantity': int(item.get('quantity', 1)),
+            }
+        elif item_type == 'drink':
+            cart_item = {
+                'index': index,
+                'item_type': 'drink',
+                'name': item.get('name', 'Drink'),
+                'size_label': item.get('size_label', ''),
+                'quantity': int(item.get('quantity', 1)),
+            }
+        else:
+            continue
+
+        cart_items.append(cart_item)
+
+    context = {
+        'form': form,
+        'cart_items': cart_items,
+        'cart_total': cart_total,
+    }
+    return render(request, 'core/checkout.html', context)
+
+
 def cart_view(request):
     cart = request.session.get('cart', [])
     cart_items = []
-    cart_total = Decimal('0.00')
+    cart_total = calculate_cart_total(cart)
 
     for index, item in enumerate(cart):
         unit_price = Decimal(str(item.get('unit_price', '0.00')))
@@ -190,7 +291,6 @@ def cart_view(request):
             continue
 
         cart_items.append(cart_item)
-        cart_total += subtotal
 
     context = {
         'cart_items': cart_items,
