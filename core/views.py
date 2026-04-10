@@ -250,6 +250,16 @@ def checkout_view(request):
     return render(request, 'core/checkout.html', context)
 
 
+@login_required
+def order_success_view(request, order_id):
+    order = get_object_or_404(Order, id=order_id, user=request.user)
+
+    context = {
+        'order': order,
+    }
+    return render(request, 'core/order_success.html', context)
+
+
 def cart_view(request):
     cart = request.session.get('cart', [])
     cart_items = []

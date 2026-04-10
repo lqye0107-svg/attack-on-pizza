@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Order Success - Attack on Pizza{% endblock %}
+
+{% block content %}
+<div class="order-success-page">
+    <div class="card order-success-card">
+        <h1 class="page-title">Order Placed Successfully!</h1>
+
+        <p>Thank you for your order.</p>
+        <p><strong>Order ID:</strong> #{{ order.id }}</p>
+        <p><strong>Status:</strong> {{ order.get_status_display }}</p>
+        <p><strong>Total:</strong> {{ order.total_price }}</p>
+        <p><strong>Delivery Address:</strong> {{ order.delivery_address }}</p>
+
+        <div class="order-success-actions">
+            <a href="{% url 'menu' %}" class="button">Back to Menu</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
