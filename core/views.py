@@ -260,6 +260,31 @@ def order_success_view(request, order_id):
     return render(request, 'core/order_success.html', context)
 
 
+@login_required
+def my_orders_view(request):
+    orders = Order.objects.filter(user=request.user).prefetch_related('items').order_by('-created_at')
+
+    context = {
+        'orders': orders,
+    }
+    return render(request, 'core/my_orders.html', context)
+
+
+@login_required
+def order_detail_view(request, order_id):
+    order = get_object_or_404(
+        Order.objects.prefetch_related('items'),
+        id=order_id,
+        user=request.user
+    )
+
+    context = {
+        'order': order,
+        'items': order.items.all(),
+    }
+    return render(request, 'core/order_detail.html', context)
+
+
 def cart_view(request):
     cart = request.session.get('cart', [])
     cart_items = []

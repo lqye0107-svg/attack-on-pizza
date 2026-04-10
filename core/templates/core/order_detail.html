@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Order Detail - Attack on Pizza{% endblock %}
+
+{% block content %}
+<div class="order-detail-page">
+    <h1 class="page-title">Order #{{ order.id }}</h1>
+
+    <div class="card order-detail-summary">
+        <p><strong>Date:</strong> {{ order.created_at }}</p>
+        <p><strong>Status:</strong> {{ order.get_status_display }}</p>
+        <p><strong>Total:</strong> {{ order.total_price }}</p>
+        <p><strong>Delivery Address:</strong> {{ order.delivery_address }}</p>
+    </div>
+
+    <div class="card order-detail-items">
+        <h2>Items</h2>
+
+        {% if items %}
+            {% for item in items %}
+                <div class="order-detail-item">
+                    <h3 class="order-detail-item-title">{{ item.name_snapshot }}</h3>
+                    <p><strong>Type:</strong> {{ item.item_type|title }}</p>
+                    <p><strong>Size:</strong> {{ item.size_snapshot }}</p>
+                    <p><strong>Quantity:</strong> {{ item.quantity }}</p>
+                    <p><strong>Unit Price:</strong> {{ item.unit_price }}</p>
+
+                    {% if item.item_type == 'pizza' %}
+                        <p>
+                            <strong>Toppings:</strong>
+                            {% if item.toppings_snapshot %}
+                                {{ item.toppings_snapshot }}
+                            {% else %}
+                                None
+                            {% endif %}
+                        </p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No items found for this order.</p>
+        {% endif %}
+    </div>
+
+    <div class="order-detail-actions">
+        <a href="{% url 'my_orders' %}" class="button">Back to My Orders</a>
+        <a href="{% url 'menu' %}" class="button">Back to Menu</a>
+    </div>
+</div>
+{% endblock %}
