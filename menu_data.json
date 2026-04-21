@@ -1,0 +1,254 @@
+[
+{
+  "model": "core.topping",
+  "pk": 1,
+  "fields": {
+    "name": "Extra Cheese",
+    "price_small": "9.99",
+    "price_medium": "12.99",
+    "price_large": "15.99",
+    "is_available": true
+  }
+},
+{
+  "model": "core.topping",
+  "pk": 2,
+  "fields": {
+    "name": "Mashrooms",
+    "price_small": "5.00",
+    "price_medium": "8.00",
+    "price_large": "11.00",
+    "is_available": true
+  }
+},
+{
+  "model": "core.topping",
+  "pk": 3,
+  "fields": {
+    "name": "Olive",
+    "price_small": "4.50",
+    "price_medium": "6.00",
+    "price_large": "7.50",
+    "is_available": true
+  }
+},
+{
+  "model": "core.topping",
+  "pk": 4,
+  "fields": {
+    "name": "Jalapeno Pepper",
+    "price_small": "5.99",
+    "price_medium": "8.99",
+    "price_large": "11.99",
+    "is_available": true
+  }
+},
+{
+  "model": "core.topping",
+  "pk": 5,
+  "fields": {
+    "name": "Onions",
+    "price_small": "2.50",
+    "price_medium": "3.50",
+    "price_large": "5.00",
+    "is_available": true
+  }
+},
+{
+  "model": "core.topping",
+  "pk": 6,
+  "fields": {
+    "name": "Bacon/Ham",
+    "price_small": "9.99",
+    "price_medium": "15.99",
+    "price_large": "20.99",
+    "is_available": true
+  }
+},
+{
+  "model": "core.topping",
+  "pk": 7,
+  "fields": {
+    "name": "BBQ Chicken",
+    "price_small": "9.99",
+    "price_medium": "15.99",
+    "price_large": "20.99",
+    "is_available": true
+  }
+},
+{
+  "model": "core.topping",
+  "pk": 8,
+  "fields": {
+    "name": "Sausage",
+    "price_small": "9.99",
+    "price_medium": "15.99",
+    "price_large": "20.99",
+    "is_available": true
+  }
+},
+{
+  "model": "core.topping",
+  "pk": 9,
+  "fields": {
+    "name": "Pineapple",
+    "price_small": "9.99",
+    "price_medium": "15.99",
+    "price_large": "20.99",
+    "is_available": true
+  }
+},
+{
+  "model": "core.pizza",
+  "pk": 1,
+  "fields": {
+    "name": "Margherita",
+    "category": "CLASSIC",
+    "description": "",
+    "image": "",
+    "is_available": true,
+    "available_toppings": [
+      1,
+      2,
+      3,
+      5
+    ]
+  }
+},
+{
+  "model": "core.pizza",
+  "pk": 2,
+  "fields": {
+    "name": "Pepperoni",
+    "category": "CLASSIC",
+    "description": "",
+    "image": "pizzas/pizza-pepperoni.jpg",
+    "is_available": true,
+    "available_toppings": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  }
+},
+{
+  "model": "core.pizza",
+  "pk": 3,
+  "fields": {
+    "name": "Hawaiian pizza",
+    "category": "CLASSIC",
+    "description": "",
+    "image": "",
+    "is_available": true,
+    "available_toppings": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 1,
+  "fields": {
+    "pizza": 1,
+    "size": "S",
+    "price": "99.00"
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 2,
+  "fields": {
+    "pizza": 1,
+    "size": "M",
+    "price": "120.00"
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 3,
+  "fields": {
+    "pizza": 1,
+    "size": "L",
+    "price": "150.00"
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 4,
+  "fields": {
+    "pizza": 2,
+    "size": "S",
+    "price": "100.00"
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 5,
+  "fields": {
+    "pizza": 2,
+    "size": "M",
+    "price": "130.00"
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 6,
+  "fields": {
+    "pizza": 2,
+    "size": "L",
+    "price": "150.00"
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 7,
+  "fields": {
+    "pizza": 3,
+    "size": "S",
+    "price": "99.00"
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 8,
+  "fields": {
+    "pizza": 3,
+    "size": "M",
+    "price": "120.00"
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 9,
+  "fields": {
+    "pizza": 3,
+    "size": "L",
+    "price": "135.00"
+  }
+},
+{
+  "model": "core.drink",
+  "pk": 1,
+  "fields": {
+    "name": "Cola",
+    "size_label": "500ML",
+    "price": "35.00",
+    "image": "",
+    "is_available": true
+  }
+}
+]
