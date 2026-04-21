@@ -13,11 +13,27 @@ def home_view(request):
 
 
 def menu_view(request):
-    pizzas = Pizza.objects.filter(is_available=True).prefetch_related('sizes')
+    classic_pizzas = Pizza.objects.filter(
+        is_available=True,
+        category='CLASSIC'
+    ).prefetch_related('sizes')
+
+    premium_pizzas = Pizza.objects.filter(
+        is_available=True,
+        category='PREMIUM'
+    ).prefetch_related('sizes')
+
+    vegetable_pizzas = Pizza.objects.filter(
+        is_available=True,
+        category='VEGETABLE'
+    ).prefetch_related('sizes')
+
     drinks = Drink.objects.filter(is_available=True)
 
     context = {
-        'pizzas': pizzas,
+        'classic_pizzas': classic_pizzas,
+        'premium_pizzas': premium_pizzas,
+        'vegetable_pizzas': vegetable_pizzas,
         'drinks': drinks,
     }
     return render(request, 'core/menu.html', context)

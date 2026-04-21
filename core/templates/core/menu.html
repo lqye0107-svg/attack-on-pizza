@@ -4,13 +4,13 @@
 
 {% block content %}
 <div class="menu-page">
-
+    <h1 class="menu-section-title">Pizza Menu</h1>
     <section class="menu-section">
-        <h1 class="menu-section-title">Pizza Menu</h1>
+        <h1 class="menu-section-title">Classic Pizza</h1>
 
-        {% if pizzas %}
+        {% if classic_pizzas %}
             <div class="menu-grid">
-                {% for pizza in pizzas %}
+                {% for pizza in classic_pizzas %}
                     <div class="card menu-card">
                         {% if pizza.image %}
                             <img src="{{ pizza.image.url }}" alt="{{ pizza.name }}" class="menu-image">
@@ -42,9 +42,92 @@
                 {% endfor %}
             </div>
         {% else %}
-            <p>No pizzas available right now.</p>
+            <p>No classic pizzas available right now.</p>
         {% endif %}
     </section>
+
+    <section class="menu-section">
+        <h2 class="menu-section-title">Premium Pizza</h2>
+
+        {% if premium_pizzas %}
+            <div class="menu-grid">
+                {% for pizza in premium_pizzas %}
+                    <div class="card menu-card">
+                        {% if pizza.image %}
+                            <img src="{{ pizza.image.url }}" alt="{{ pizza.name }}" class="menu-image">
+                        {% endif %}
+
+                        <div class="menu-card-body">
+                            <h3 class="menu-item-title">{{ pizza.name }}</h3>
+
+                            {% if pizza.description %}
+                                <p class="menu-description">{{ pizza.description }}</p>
+                            {% endif %}
+
+                            {% if pizza.sizes.all %}
+                                <div class="menu-meta">
+                                    <p><strong>Available sizes:</strong></p>
+                                    <ul class="menu-size-list">
+                                        {% for size in pizza.sizes.all %}
+                                            <li>{{ size.get_size_display }} - {{ size.price }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="menu-card-footer">
+                            <a class="button" href="{% url 'pizza_detail' pizza.id %}">View Details</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No premium pizzas available right now.</p>
+        {% endif %}
+    </section>
+
+    <section class="menu-section">
+        <h2 class="menu-section-title">Vegetable Pizza</h2>
+
+        {% if vegetable_pizzas %}
+            <div class="menu-grid">
+                {% for pizza in vegetable_pizzas %}
+                    <div class="card menu-card">
+                        {% if pizza.image %}
+                            <img src="{{ pizza.image.url }}" alt="{{ pizza.name }}" class="menu-image">
+                        {% endif %}
+
+                        <div class="menu-card-body">
+                            <h3 class="menu-item-title">{{ pizza.name }}</h3>
+
+                            {% if pizza.description %}
+                                <p class="menu-description">{{ pizza.description }}</p>
+                            {% endif %}
+
+                            {% if pizza.sizes.all %}
+                                <div class="menu-meta">
+                                    <p><strong>Available sizes:</strong></p>
+                                    <ul class="menu-size-list">
+                                        {% for size in pizza.sizes.all %}
+                                            <li>{{ size.get_size_display }} - {{ size.price }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="menu-card-footer">
+                            <a class="button" href="{% url 'pizza_detail' pizza.id %}">View Details</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No vegetable pizzas available right now.</p>
+        {% endif %}
+    </section>
+
 
     <section class="menu-section">
         <h2 class="menu-section-title">Drink Menu</h2>

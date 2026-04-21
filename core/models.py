@@ -15,7 +15,18 @@ class Topping(models.Model):
 
 
 class Pizza(models.Model):
+    CATEGORY_CHOICES = [
+        ('CLASSIC', 'Classic'),
+        ('PREMIUM', 'Premium'),
+        ('VEGETABLE', 'Vegetable'),
+    ]
+
     name = models.CharField(max_length=100, unique=True)
+    category = models.CharField(
+        max_length=20,
+        choices=CATEGORY_CHOICES,
+        default='CLASSIC'
+    )
     description = models.TextField(blank=True)
     image = models.ImageField(upload_to='pizzas/', blank=True, null=True)
     is_available = models.BooleanField(default=True)

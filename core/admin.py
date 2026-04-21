@@ -14,8 +14,8 @@ class PizzaSizeInline(admin.TabularInline):
 
 @admin.register(Pizza)
 class PizzaAdmin(admin.ModelAdmin):
-    list_display = ('name', 'is_available')
-    list_filter = ('is_available',)
+    list_display = ('name', 'category', 'is_available')
+    list_filter = ('category', 'is_available')
     search_fields = ('name',)
     filter_horizontal = ('available_toppings',)
     inlines = [PizzaSizeInline]
