@@ -14,6 +14,8 @@
                     <div class="card menu-card">
                         {% if pizza.image %}
                             <img src="{{ pizza.image.url }}" alt="{{ pizza.name }}" class="menu-image">
+                        {% else %}
+                            <div class="menu-image-placeholder"></div>
                         {% endif %}
 
                         <div class="menu-card-body">
@@ -138,6 +140,8 @@
                     <div class="card menu-card drink-card">
                         {% if drink.image %}
                             <img src="{{ drink.image.url }}" alt="{{ drink.name }}" class="menu-image">
+                        {% else %}
+                            <div class="menu-image-placeholder"></div>
                         {% endif %}
 
                         <div class="menu-card-body">

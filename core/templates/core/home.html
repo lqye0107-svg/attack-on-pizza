@@ -1,25 +1,17 @@
 {% extends 'base.html' %}
-{% load static %}
 
 {% block title %}Home - Attack on Pizza{% endblock %}
 
 {% block content %}
 <div class="home-page">
+    <section class="home-hero">
+        <div class="home-hero-content">
+            <p class="home-tagline">Bold pizza. Titan appetite.</p>
 
-    <div class="hero-banner">
-        <img src="{% static 'core/images/menu-banner.png' %}" alt="Attack on Pizza banner" class="hero-image">
-    </div>
-
-    <div class="card home-intro-card">
-        <h1 class="home-title">Welcome to Attack on Pizza</h1>
-        <p class="home-text">
-            Your anime-inspired pizza take-out experience starts here.
-            Explore our pizzas, choose your size, customize your toppings,
-            and get ready to attack your hunger.
-        </p>
-        
-        <a href="{% url 'menu' %}" class="button">Explore Menu</a>
-    </div>
-
+            <div class="home-actions">
+            <a href="{% url 'menu' %}" class="button home-button">Explore Menu</a>
+            </div>
+        </div>
+    </section>
 </div>
 {% endblock %}
