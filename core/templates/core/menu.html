@@ -3,10 +3,18 @@
 {% block title %}Menu - Attack on Pizza{% endblock %}
 
 {% block content %}
+
+{% load static %}
 <div class="menu-page">
-    <h1 class="menu-section-title">Pizza Menu</h1>
+    <h1 class="menu-main-title menu-title-with-icon">
+        <img src="{% static 'core/images/pizza_menu.png' %}" alt="Pizza Menu icon" class="menu-title-icon menu-title-icon-main">
+        <span>Pizza Menu</span>
+    </h1>
     <section class="menu-section">
-        <h2 class="menu-section-title category-title">Classic</h2>
+        <h2 class="menu-section-title category-title menu-title-with-icon">
+            <img src="{% static 'core/images/classic.png' %}" alt="Classic icon" class="menu-title-icon">
+            <span>Classic</span>
+        </h2>
 
         {% if classic_pizzas %}
             <div class="menu-grid">
@@ -49,7 +57,10 @@
     </section>
 
     <section class="menu-section">
-        <h2 class="menu-section-title category-title">Premium</h2>
+        <h2 class="menu-section-title category-title menu-title-with-icon">
+            <img src="{% static 'core/images/premium.png' %}" alt="Premium icon" class="menu-title-icon">
+            <span>Premium</span>
+        </h2>
 
         {% if premium_pizzas %}
             <div class="menu-grid">
@@ -90,7 +101,10 @@
     </section>
 
     <section class="menu-section">
-        <h2 class="menu-section-title category-title">Vegetable</h2>
+        <h2 class="menu-section-title category-title menu-title-with-icon">
+            <img src="{% static 'core/images/vegetable.png' %}" alt="Vegetable icon" class="menu-title-icon">
+            <span>Vegetable</span>
+        </h2>
 
         {% if vegetable_pizzas %}
             <div class="menu-grid">
@@ -132,7 +146,10 @@
 
 
     <section class="menu-section">
-        <h2 class="menu-section-title">Drink Menu</h2>
+        <h1 class="menu-section-title menu-title-with-icon menu-drink-title">
+            <img src="{% static 'core/images/drink_menu.png' %}" alt="Drink Menu icon" class="menu-title-icon">
+            <span>Drink Menu</span>
+        </h1>
 
         {% if drinks %}
             <div class="menu-grid">

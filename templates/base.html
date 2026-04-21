@@ -10,7 +10,9 @@
 <body>
     <nav class="navbar">
         <div class="container nav-container">
-            <a class="brand" href="{% url 'home' %}">Attack on Pizza</a>
+            <a class="brand" href="{% url 'home' %}">
+                <img src="{% static 'core/images/logo.png' %}" alt="Attack on Pizza logo" class="brand-logo-image">
+            </a>
 
             <div class="nav-links">
                 <a href="{% url 'home' %}">Home</a>

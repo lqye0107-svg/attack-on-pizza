@@ -33,8 +33,9 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     background:
-        linear-gradient(to bottom, rgba(216, 155, 60, 0.06), rgba(245, 241, 235, 0)),
-        var(--bg-main);
+        radial-gradient(circle at top, rgba(122, 46, 46, 0.08), rgba(245, 241, 235, 0) 28%),
+        linear-gradient(to bottom, rgba(216, 155, 60, 0.08), rgba(245, 241, 235, 0)),
+        #f3ede4;
     color: var(--text-main);
     overflow-x: hidden;
 }
@@ -52,18 +53,18 @@ body {
     margin: 0 0 18px;
     font-size: clamp(1.7rem, 2vw, 2.3rem);
     font-weight: 700;
-    color: #3a2418;
+    color: #3b2417;
     letter-spacing: 0.01em;
 }
 
 .card {
     background:
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.65), rgba(255, 250, 245, 0.96)),
-        var(--card-bg);
-    border: 1px solid var(--card-border);
+        linear-gradient(to bottom, rgba(255, 248, 240, 0.82), rgba(255, 245, 235, 0.97)),
+        #fff8ef;
+    border: 1px solid #d8c5aa;
     border-radius: var(--radius-lg);
     padding: clamp(16px, 2vw, 24px);
-    box-shadow: var(--shadow-card);
+    box-shadow: 0 10px 24px rgba(52, 32, 20, 0.10);
     position: relative;
 }
 
@@ -85,7 +86,7 @@ body {
         linear-gradient(to bottom, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.18));
     border-bottom: 1px solid rgba(216, 155, 60, 0.35);
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
-    padding: 20px 0;
+    padding: 1px 0;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -100,13 +101,25 @@ body {
 }
 
 .brand {
-    color: var(--accent-gold);
     text-decoration: none;
-    font-size: 1.9rem;
-    font-weight: 800;
-    letter-spacing: 0.03em;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
-    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.brand-logo-image {
+    display: block;
+    height: 80px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.28));
+    transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+.brand:hover .brand-logo-image {
+    transform: translateY(-1px);
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.34));
 }
 
 .brand:hover {
@@ -384,7 +397,7 @@ body:has(.home-page) .page-content {
     font-size: clamp(2rem, 3vw, 2.8rem);
     margin: 0 0 34px 0;
     font-weight: 700;
-    color: #3a2418;
+    color: #3b2417;
     letter-spacing: 0.02em;
 }
 
@@ -407,8 +420,37 @@ body:has(.home-page) .page-content {
     font-size: clamp(1.35rem, 1.8vw, 1.8rem);
     margin: 0 0 24px;
     padding: 0 4px 12px;
-    border-bottom: 2px solid var(--accent-gold);
+    border-bottom: 2px solid #cf8f24;
     color: #4a2a1f;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.menu-title-with-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.category-title.menu-title-with-icon {
+    justify-content: flex-start;
+}
+
+.menu-title-icon {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.menu-title-icon-main {
+    width: 52px;
+    height: 52px;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.18));
+}
+
+.menu-title-with-icon span {
+    display: inline-block;
 }
 
 .menu-grid {
@@ -868,8 +910,8 @@ body:has(.home-page) .page-content {
         gap: 12px;
     }
 
-    .brand {
-        font-size: 1.55rem;
+    .brand-logo-image {
+        height: 38px;
     }
 
     .page-content {
@@ -945,5 +987,15 @@ body:has(.home-page) .page-content {
     .home-button {
         padding: 14px 24px;
         font-size: 1.05rem;
+    }
+
+    .menu-title-icon {
+        width: 34px;
+        height: 34px;
+    }
+
+    .menu-title-icon-main {
+        width: 40px;
+        height: 40px;
     }
 }
