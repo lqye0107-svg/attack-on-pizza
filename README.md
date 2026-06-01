@@ -47,6 +47,7 @@ These models are connected to support the full ordering process, from browsing t
 
 The project also includes 10 main HTML templates:
 
+**base.html**: the main layout template. It includes the navbar, CSS link, message display area, and the main content block.
 **home.html**: the homepage of the website.
 **menu.html**: shows pizza categories and drinks.
 **pizza_detail.html**: allows users to choose pizza size and toppings.
