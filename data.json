@@ -1,0 +1,651 @@
+[
+{
+  "model": "core.topping",
+  "pk": 1,
+  "fields": {
+    "name": "Extra Cheese",
+    "price_small": "9.99",
+    "price_medium": "12.99",
+    "price_large": "15.99",
+    "is_available": true
+  }
+},
+{
+  "model": "core.topping",
+  "pk": 2,
+  "fields": {
+    "name": "Mashrooms",
+    "price_small": "5.00",
+    "price_medium": "8.00",
+    "price_large": "11.00",
+    "is_available": true
+  }
+},
+{
+  "model": "core.topping",
+  "pk": 3,
+  "fields": {
+    "name": "Olive",
+    "price_small": "4.50",
+    "price_medium": "6.00",
+    "price_large": "7.50",
+    "is_available": true
+  }
+},
+{
+  "model": "core.topping",
+  "pk": 4,
+  "fields": {
+    "name": "Jalapeno Pepper",
+    "price_small": "5.99",
+    "price_medium": "8.99",
+    "price_large": "11.99",
+    "is_available": true
+  }
+},
+{
+  "model": "core.topping",
+  "pk": 5,
+  "fields": {
+    "name": "Onions",
+    "price_small": "2.50",
+    "price_medium": "3.50",
+    "price_large": "5.00",
+    "is_available": true
+  }
+},
+{
+  "model": "core.topping",
+  "pk": 6,
+  "fields": {
+    "name": "Bacon/Ham",
+    "price_small": "9.99",
+    "price_medium": "15.99",
+    "price_large": "20.99",
+    "is_available": true
+  }
+},
+{
+  "model": "core.topping",
+  "pk": 7,
+  "fields": {
+    "name": "BBQ Chicken",
+    "price_small": "9.99",
+    "price_medium": "15.99",
+    "price_large": "20.99",
+    "is_available": true
+  }
+},
+{
+  "model": "core.topping",
+  "pk": 8,
+  "fields": {
+    "name": "Sausage",
+    "price_small": "9.99",
+    "price_medium": "15.99",
+    "price_large": "20.99",
+    "is_available": true
+  }
+},
+{
+  "model": "core.topping",
+  "pk": 9,
+  "fields": {
+    "name": "Pineapple",
+    "price_small": "9.99",
+    "price_medium": "15.99",
+    "price_large": "20.99",
+    "is_available": true
+  }
+},
+{
+  "model": "core.pizza",
+  "pk": 1,
+  "fields": {
+    "name": "Margherita Pizza",
+    "category": "CLASSIC",
+    "description": "A classic pizza topped with tomato sauce, mozzarella cheese, and fresh basil.",
+    "image": "pizzas/pizza-margherita1_fyR8qoD.jpg",
+    "is_available": true,
+    "available_toppings": [
+      1,
+      2,
+      3,
+      5
+    ]
+  }
+},
+{
+  "model": "core.pizza",
+  "pk": 2,
+  "fields": {
+    "name": "Pepperoni Pizza",
+    "category": "CLASSIC",
+    "description": "A classic pizza topped with spicy pepperoni, tomato sauce, and melted mozzarella cheese.",
+    "image": "pizzas/pizza-pepperoni.jpg",
+    "is_available": true,
+    "available_toppings": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  }
+},
+{
+  "model": "core.pizza",
+  "pk": 3,
+  "fields": {
+    "name": "Hawaiian Pizza",
+    "category": "CLASSIC",
+    "description": "A sweet and savory pizza topped with ham, pineapple, tomato sauce, and melted mozzarella cheese.",
+    "image": "pizzas/pizza-hawaiian_ZDZbR1s.jpg",
+    "is_available": true,
+    "available_toppings": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  }
+},
+{
+  "model": "core.pizza",
+  "pk": 4,
+  "fields": {
+    "name": "BBQ Chicken Pizza",
+    "category": "PREMIUM",
+    "description": "A smoky pizza topped with tender chicken, barbecue sauce, red onion, and melted mozzarella cheese.",
+    "image": "pizzas/pizzy-BBQ_H1dPpuC.jpg",
+    "is_available": true,
+    "available_toppings": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  }
+},
+{
+  "model": "core.pizza",
+  "pk": 5,
+  "fields": {
+    "name": "Buffalo Chicken Pizza",
+    "category": "PREMIUM",
+    "description": "A spicy pizza topped with buffalo chicken, mozzarella cheese, and a creamy ranch-style sauce.",
+    "image": "pizzas/pizza-buffalochicken_4qJwwgo.jpg",
+    "is_available": true,
+    "available_toppings": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  }
+},
+{
+  "model": "core.pizza",
+  "pk": 6,
+  "fields": {
+    "name": "Seafood Pizza",
+    "category": "PREMIUM",
+    "description": "A flavorful pizza topped with mixed seafood, tomato sauce, mozzarella cheese, and fresh herbs.",
+    "image": "pizzas/pizza-seafood_5XBwWyp.jpg",
+    "is_available": true,
+    "available_toppings": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  }
+},
+{
+  "model": "core.pizza",
+  "pk": 7,
+  "fields": {
+    "name": "Nordic Delight Pizza",
+    "category": "PREMIUM",
+    "description": "A Nordic-inspired pizza topped with tender salmon, creamy cheese, and fresh herbs.",
+    "image": "pizzas/pizza-nordic_delight.jpg",
+    "is_available": true,
+    "available_toppings": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  }
+},
+{
+  "model": "core.pizza",
+  "pk": 8,
+  "fields": {
+    "name": "Veggie Supreme Pizza",
+    "category": "VEGETABLE",
+    "description": "A colorful pizza topped with fresh vegetables, tomato sauce, and melted mozzarella cheese.",
+    "image": "pizzas/pizza-vegan_huXoXXp.jpg",
+    "is_available": true,
+    "available_toppings": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      9
+    ]
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 1,
+  "fields": {
+    "pizza": 1,
+    "size": "S",
+    "price": "99.00"
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 2,
+  "fields": {
+    "pizza": 1,
+    "size": "M",
+    "price": "120.00"
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 3,
+  "fields": {
+    "pizza": 1,
+    "size": "L",
+    "price": "150.00"
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 4,
+  "fields": {
+    "pizza": 2,
+    "size": "S",
+    "price": "100.00"
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 5,
+  "fields": {
+    "pizza": 2,
+    "size": "M",
+    "price": "130.00"
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 6,
+  "fields": {
+    "pizza": 2,
+    "size": "L",
+    "price": "150.00"
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 7,
+  "fields": {
+    "pizza": 3,
+    "size": "S",
+    "price": "99.00"
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 8,
+  "fields": {
+    "pizza": 3,
+    "size": "M",
+    "price": "120.00"
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 9,
+  "fields": {
+    "pizza": 3,
+    "size": "L",
+    "price": "135.00"
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 10,
+  "fields": {
+    "pizza": 4,
+    "size": "S",
+    "price": "109.00"
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 11,
+  "fields": {
+    "pizza": 4,
+    "size": "M",
+    "price": "129.00"
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 12,
+  "fields": {
+    "pizza": 4,
+    "size": "L",
+    "price": "150.00"
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 13,
+  "fields": {
+    "pizza": 5,
+    "size": "S",
+    "price": "109.00"
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 14,
+  "fields": {
+    "pizza": 5,
+    "size": "M",
+    "price": "129.00"
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 15,
+  "fields": {
+    "pizza": 5,
+    "size": "L",
+    "price": "150.00"
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 16,
+  "fields": {
+    "pizza": 6,
+    "size": "S",
+    "price": "119.00"
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 17,
+  "fields": {
+    "pizza": 6,
+    "size": "M",
+    "price": "139.00"
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 18,
+  "fields": {
+    "pizza": 6,
+    "size": "L",
+    "price": "180.00"
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 19,
+  "fields": {
+    "pizza": 7,
+    "size": "S",
+    "price": "119.00"
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 20,
+  "fields": {
+    "pizza": 7,
+    "size": "M",
+    "price": "139.00"
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 21,
+  "fields": {
+    "pizza": 7,
+    "size": "L",
+    "price": "159.98"
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 22,
+  "fields": {
+    "pizza": 8,
+    "size": "S",
+    "price": "89.00"
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 23,
+  "fields": {
+    "pizza": 8,
+    "size": "M",
+    "price": "109.00"
+  }
+},
+{
+  "model": "core.pizzasize",
+  "pk": 24,
+  "fields": {
+    "pizza": 8,
+    "size": "L",
+    "price": "120.00"
+  }
+},
+{
+  "model": "core.drink",
+  "pk": 1,
+  "fields": {
+    "name": "Cola",
+    "size_label": "500ML",
+    "price": "35.00",
+    "image": "drinks/drink-cola.jpg",
+    "is_available": true
+  }
+},
+{
+  "model": "core.drink",
+  "pk": 2,
+  "fields": {
+    "name": "Sprit",
+    "size_label": "500ML",
+    "price": "35.00",
+    "image": "drinks/drink-sprit.png",
+    "is_available": true
+  }
+},
+{
+  "model": "core.drink",
+  "pk": 3,
+  "fields": {
+    "name": "Milkshake",
+    "size_label": "600ML",
+    "price": "55.00",
+    "image": "drinks/drink-mlikshake.png",
+    "is_available": true
+  }
+},
+{
+  "model": "core.order",
+  "pk": 1,
+  "fields": {
+    "user": 3,
+    "created_at": "2026-04-10T19:58:34.127Z",
+    "status": "PENDING",
+    "total_price": "125.97",
+    "delivery_address": "Nydalen01"
+  }
+},
+{
+  "model": "core.order",
+  "pk": 2,
+  "fields": {
+    "user": 1,
+    "created_at": "2026-04-10T21:15:55.890Z",
+    "status": "COMPLETED",
+    "total_price": "157.50",
+    "delivery_address": "Oslo 02"
+  }
+},
+{
+  "model": "core.order",
+  "pk": 3,
+  "fields": {
+    "user": 1,
+    "created_at": "2026-04-10T21:27:42.178Z",
+    "status": "PENDING",
+    "total_price": "153.99",
+    "delivery_address": "xxx"
+  }
+},
+{
+  "model": "core.order",
+  "pk": 4,
+  "fields": {
+    "user": 1,
+    "created_at": "2026-04-21T12:36:57.442Z",
+    "status": "PENDING",
+    "total_price": "125.97",
+    "delivery_address": "sahs"
+  }
+},
+{
+  "model": "core.order",
+  "pk": 5,
+  "fields": {
+    "user": 5,
+    "created_at": "2026-05-31T14:25:09.885Z",
+    "status": "COMPLETED",
+    "total_price": "152.49",
+    "delivery_address": "BI shcool"
+  }
+},
+{
+  "model": "core.orderitem",
+  "pk": 1,
+  "fields": {
+    "order": 1,
+    "item_type": "pizza",
+    "name_snapshot": "Pepperoni",
+    "size_snapshot": "Small",
+    "quantity": 1,
+    "unit_price": "125.97",
+    "toppings_snapshot": "Extra Cheese, Jalapeno Pepper, BBQ Chicken"
+  }
+},
+{
+  "model": "core.orderitem",
+  "pk": 2,
+  "fields": {
+    "order": 2,
+    "item_type": "pizza",
+    "name_snapshot": "Pepperoni",
+    "size_snapshot": "Large",
+    "quantity": 1,
+    "unit_price": "157.50",
+    "toppings_snapshot": "Olive"
+  }
+},
+{
+  "model": "core.orderitem",
+  "pk": 3,
+  "fields": {
+    "order": 3,
+    "item_type": "pizza",
+    "name_snapshot": "Pepperoni",
+    "size_snapshot": "Medium",
+    "quantity": 1,
+    "unit_price": "153.99",
+    "toppings_snapshot": "Mashrooms, Bacon/Ham"
+  }
+},
+{
+  "model": "core.orderitem",
+  "pk": 4,
+  "fields": {
+    "order": 4,
+    "item_type": "pizza",
+    "name_snapshot": "Pepperoni",
+    "size_snapshot": "Small",
+    "quantity": 1,
+    "unit_price": "125.97",
+    "toppings_snapshot": "Extra Cheese, Jalapeno Pepper, BBQ Chicken"
+  }
+},
+{
+  "model": "core.orderitem",
+  "pk": 5,
+  "fields": {
+    "order": 5,
+    "item_type": "pizza",
+    "name_snapshot": "Pepperoni",
+    "size_snapshot": "Small",
+    "quantity": 1,
+    "unit_price": "117.49",
+    "toppings_snapshot": "Extra Cheese, Mashrooms, Onions"
+  }
+},
+{
+  "model": "core.orderitem",
+  "pk": 6,
+  "fields": {
+    "order": 5,
+    "item_type": "drink",
+    "name_snapshot": "Cola",
+    "size_snapshot": "500ML",
+    "quantity": 1,
+    "unit_price": "35.00",
+    "toppings_snapshot": ""
+  }
+}
+]
