@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="order-detail-page">
-    <h1 class="page-title">Order #{{ order.id }}</h1>
+    <h1 class="page-title">Order #{{ order_display_number }}</h1>
 
     <div class="card order-detail-summary">
         <p><strong>Date:</strong> {{ order.created_at }}</p>

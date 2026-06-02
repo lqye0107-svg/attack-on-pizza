@@ -270,15 +270,43 @@ def checkout_view(request):
 def order_success_view(request, order_id):
     order = get_object_or_404(Order, id=order_id, user=request.user)
 
+    user_order_ids = list(
+        Order.objects.filter(user=request.user)
+        .order_by('created_at', 'id')
+        .values_list('id', flat=True)
+    )
+
+    order_display_number = user_order_ids.index(order.id) + 1
+
     context = {
         'order': order,
+        'order_display_number': order_display_number,
     }
     return render(request, 'core/order_success.html', context)
 
 
 @login_required
+@login_required
 def my_orders_view(request):
-    orders = Order.objects.filter(user=request.user).prefetch_related('items').order_by('-created_at')
+    orders = list(
+        Order.objects.filter(user=request.user)
+        .prefetch_related('items')
+        .order_by('-created_at')
+    )
+
+    user_order_ids = list(
+        Order.objects.filter(user=request.user)
+        .order_by('created_at', 'id')
+        .values_list('id', flat=True)
+    )
+
+    order_number_map = {
+        order_id: index + 1
+        for index, order_id in enumerate(user_order_ids)
+    }
+
+    for order in orders:
+        order.display_number = order_number_map.get(order.id)
 
     context = {
         'orders': orders,
@@ -294,9 +322,18 @@ def order_detail_view(request, order_id):
         user=request.user
     )
 
+    user_order_ids = list(
+        Order.objects.filter(user=request.user)
+        .order_by('created_at', 'id')
+        .values_list('id', flat=True)
+    )
+
+    order_display_number = user_order_ids.index(order.id) + 1
+
     context = {
         'order': order,
         'items': order.items.all(),
+        'order_display_number': order_display_number,
     }
     return render(request, 'core/order_detail.html', context)
 
