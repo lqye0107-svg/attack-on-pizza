@@ -3,7 +3,7 @@
   "model": "auth.user",
   "pk": 1,
   "fields": {
-    "password": "pbkdf2_sha256$1200000$qeab0ouNu8siqvmkri1Jfe$d+eP4j9upgGWdIqd3OVG5IyDfV9tBupR6wHkKFWkv1s=",
+    "password": "pbkdf2_sha256$1200000$CMg7pqji3JOAQftPmEvfyc$AV+VFLLusfVut2499PgqT4MHuBbFBoCeT1cTx0g+BWM=",
     "last_login": "2026-06-03T07:37:38Z",
     "is_superuser": true,
     "username": "Izzy",
