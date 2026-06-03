@@ -1,5 +1,113 @@
 [
 {
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$qeab0ouNu8siqvmkri1Jfe$d+eP4j9upgGWdIqd3OVG5IyDfV9tBupR6wHkKFWkv1s=",
+    "last_login": "2026-06-03T07:37:38.594Z",
+    "is_superuser": true,
+    "username": "Izzy",
+    "first_name": "",
+    "last_name": "",
+    "email": "s2412250@bi.no",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-03-23T16:16:06Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$xxJWKHM7L9aLJAz5ERy3nz$ixovCtONcYvL4T0R/LIHqj9ZjpLywlLLuddKDfuYr3U=",
+    "last_login": "2026-03-28T11:42:25.243Z",
+    "is_superuser": true,
+    "username": "meri",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-03-25T09:05:35Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$Sw1zM0lFlHnvgHBHnkOfAR$KUYgfE6Kxo/8Wk6q1RMFXy367zzMe1KPfMaVvm24TrI=",
+    "last_login": "2026-04-10T21:23:21.140Z",
+    "is_superuser": false,
+    "username": "tester001",
+    "first_name": "Obisan",
+    "last_name": "YY",
+    "email": "Lizzy0816@163.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-04-10T19:57:38.375Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$QrzGzeXymFm0VUdi4mst6a$i5hCvP07uBYq1ZeiwlU8bnsHWcWKuWJFnV5gvQFKREE=",
+    "last_login": "2026-06-02T09:10:15.097Z",
+    "is_superuser": false,
+    "username": "123456a",
+    "first_name": "Lili",
+    "last_name": "Ly",
+    "email": "123456@123.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-05-31T14:23:49.910Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$jcgzftVtv9HMhKtG9dnSk6$8HgiJ/ZpF/sKVVifVvEcHGLEvjxie9XLsVyA3EDwSX4=",
+    "last_login": "2026-06-03T07:34:36.049Z",
+    "is_superuser": true,
+    "username": "Superadmin",
+    "first_name": "",
+    "last_name": "",
+    "email": "Superadmin@aop.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-06-03T07:33:33.920Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$DBSMdFlZUj9PYZmLbY0TXJ$xQYF1usHwDaS2BLW3Z9a43BbSLpUsP6N0M7SdSI9FLE=",
+    "last_login": "2026-06-03T07:37:21.691Z",
+    "is_superuser": false,
+    "username": "customer",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-06-03T07:36:47.763Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
   "model": "core.topping",
   "pk": 1,
   "fields": {
@@ -497,7 +605,7 @@
   "model": "core.drink",
   "pk": 2,
   "fields": {
-    "name": "Sprit",
+    "name": "Sprite",
     "size_label": "500ML",
     "price": "35.00",
     "image": "drinks/drink-sprit.png",
@@ -568,6 +676,39 @@
     "status": "COMPLETED",
     "total_price": "152.49",
     "delivery_address": "BI shcool"
+  }
+},
+{
+  "model": "core.order",
+  "pk": 6,
+  "fields": {
+    "user": 1,
+    "created_at": "2026-06-02T07:16:11.783Z",
+    "status": "PENDING",
+    "total_price": "105.00",
+    "delivery_address": "BI"
+  }
+},
+{
+  "model": "core.order",
+  "pk": 7,
+  "fields": {
+    "user": 5,
+    "created_at": "2026-06-02T07:45:13.150Z",
+    "status": "PENDING",
+    "total_price": "108.99",
+    "delivery_address": "BI"
+  }
+},
+{
+  "model": "core.order",
+  "pk": 8,
+  "fields": {
+    "user": 1,
+    "created_at": "2026-06-02T09:02:58.074Z",
+    "status": "PENDING",
+    "total_price": "157.49",
+    "delivery_address": "Oslo"
   }
 },
 {
@@ -646,6 +787,45 @@
     "quantity": 1,
     "unit_price": "35.00",
     "toppings_snapshot": ""
+  }
+},
+{
+  "model": "core.orderitem",
+  "pk": 7,
+  "fields": {
+    "order": 6,
+    "item_type": "drink",
+    "name_snapshot": "Sprit",
+    "size_snapshot": "500ML",
+    "quantity": 3,
+    "unit_price": "35.00",
+    "toppings_snapshot": ""
+  }
+},
+{
+  "model": "core.orderitem",
+  "pk": 8,
+  "fields": {
+    "order": 7,
+    "item_type": "pizza",
+    "name_snapshot": "Margherita Pizza",
+    "size_snapshot": "Small",
+    "quantity": 1,
+    "unit_price": "108.99",
+    "toppings_snapshot": "Extra Cheese"
+  }
+},
+{
+  "model": "core.orderitem",
+  "pk": 9,
+  "fields": {
+    "order": 8,
+    "item_type": "pizza",
+    "name_snapshot": "Pepperoni Pizza",
+    "size_snapshot": "Medium",
+    "quantity": 1,
+    "unit_price": "157.49",
+    "toppings_snapshot": "Mashrooms, Onions, Sausage"
   }
 }
 ]
