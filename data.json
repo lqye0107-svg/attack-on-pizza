@@ -4,12 +4,12 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$1200000$qeab0ouNu8siqvmkri1Jfe$d+eP4j9upgGWdIqd3OVG5IyDfV9tBupR6wHkKFWkv1s=",
-    "last_login": "2026-06-03T07:37:38.594Z",
+    "last_login": "2026-06-03T07:37:38Z",
     "is_superuser": true,
     "username": "Izzy",
     "first_name": "",
     "last_name": "",
-    "email": "s2412250@bi.no",
+    "email": "",
     "is_staff": true,
     "is_active": true,
     "date_joined": "2026-03-23T16:16:06Z",
@@ -40,15 +40,15 @@
   "pk": 3,
   "fields": {
     "password": "pbkdf2_sha256$1200000$Sw1zM0lFlHnvgHBHnkOfAR$KUYgfE6Kxo/8Wk6q1RMFXy367zzMe1KPfMaVvm24TrI=",
-    "last_login": "2026-04-10T21:23:21.140Z",
+    "last_login": "2026-04-10T21:23:21Z",
     "is_superuser": false,
     "username": "tester001",
     "first_name": "Obisan",
     "last_name": "YY",
-    "email": "Lizzy0816@163.com",
+    "email": "",
     "is_staff": false,
     "is_active": true,
-    "date_joined": "2026-04-10T19:57:38.375Z",
+    "date_joined": "2026-04-10T19:57:38Z",
     "groups": [],
     "user_permissions": []
   }
@@ -58,15 +58,15 @@
   "pk": 5,
   "fields": {
     "password": "pbkdf2_sha256$1200000$QrzGzeXymFm0VUdi4mst6a$i5hCvP07uBYq1ZeiwlU8bnsHWcWKuWJFnV5gvQFKREE=",
-    "last_login": "2026-06-02T09:10:15.097Z",
+    "last_login": "2026-06-02T09:10:15Z",
     "is_superuser": false,
     "username": "123456a",
     "first_name": "Lili",
     "last_name": "Ly",
-    "email": "123456@123.com",
+    "email": "",
     "is_staff": false,
     "is_active": true,
-    "date_joined": "2026-05-31T14:23:49.910Z",
+    "date_joined": "2026-05-31T14:23:49Z",
     "groups": [],
     "user_permissions": []
   }
@@ -76,7 +76,7 @@
   "pk": 6,
   "fields": {
     "password": "pbkdf2_sha256$1200000$jcgzftVtv9HMhKtG9dnSk6$8HgiJ/ZpF/sKVVifVvEcHGLEvjxie9XLsVyA3EDwSX4=",
-    "last_login": "2026-06-03T07:34:36.049Z",
+    "last_login": "2026-06-03T07:43:02.163Z",
     "is_superuser": true,
     "username": "Superadmin",
     "first_name": "",
