@@ -17,9 +17,9 @@
             <div class="nav-links">
                 <a href="{% url 'home' %}">Home</a>
                 <a href="{% url 'menu' %}">Menu</a>
+                <a href="{% url 'cart' %}">Cart</a>
 
                 {% if user.is_authenticated %}
-                    <a href="{% url 'cart' %}">Cart</a>
                     <a href="{% url 'my_orders' %}">My Orders</a>
                     <form action="{% url 'logout' %}" method="post" style="display: inline;">
                         {% csrf_token %}
@@ -28,7 +28,7 @@
                 {% else %}
                     <a href="{% url 'login' %}">Login</a>
                     <a href="{% url 'register' %}">Register</a>
-                {% endif %}
+                 {% endif %}
             </div>
         </div>
     </nav>
